@@ -47,7 +47,7 @@ function telephoneCheck(str) {
       return format.length === test;
     }
     // CONDITION FOR 1 555 555 5555 OR 1 555-555-5555 OR 1(555)555-5555 FORMAT
-    else if (telephoneArr.length === 14) {
+    else if (telephoneArr.length === 14 && telephoneArr[0] == 1) {
       let format = [];
       // TEST INDEX 0
       if (num.test(telephoneArr[0])) {
@@ -104,7 +104,7 @@ function telephoneCheck(str) {
       return format.length === test;
     }
     // CONDITION FOR 1 (555) 555-5555 FORMAT
-    else if (telephoneArr.length === 16) {
+    else if (telephoneArr.length === 16 && telephoneArr[0] == 1) {
       let format = [];
       // TEST INDEX 0
       if (num.test(telephoneArr[0])) {
@@ -235,8 +235,12 @@ function telephoneCheck(str) {
       // TEST FORMAT, IF LESS THAN 16, THE FORMAT DIDN'T PASS THE TEST
       let test = 14;
       return format.length === test;
+    } else {
+      return false;
     }
-  } else {
+  }
+  // ALL OTHER CONDITIONS DON'T PASS.
+  else {
     return false;
   }
 }
@@ -260,4 +264,4 @@ function telephoneCheck(str) {
 // console.log('=============================');
 // console.log('(555) 555 5555', telephoneCheck("(555) 555 5555"));
 // console.log('=============================');
-console.log('1 555)555-5555', telephoneCheck('1 555)555-5555'));
+// console.log("2 (757) 622-7382", telephoneCheck("2 (757) 622-7382"));
